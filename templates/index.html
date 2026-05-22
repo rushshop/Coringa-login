@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rush Shop - Login</title>
+
+  <link rel="stylesheet" href="/login.css">
+</head>
+
+<body>
+
+  <section class="tela-login">
+
+    <div class="carta-fundo carta1">
+      <span>R</span>
+      ♠
+    </div>
+
+    <div class="carta-fundo carta2">
+      <span>S</span>
+      ♣
+    </div>
+
+    <div class="carta-fundo carta3">
+      <span>R</span>
+      ♥
+    </div>
+
+    <div class="carta-fundo carta4">
+      <span>S</span>
+      ♦
+    </div>
+
+    <div class="login-box">
+
+      <div class="topo">
+        <div class="logo">
+          <img src="/logo.png" alt="Rush Shop">
+        </div>
+
+        <h1>Rush<span>Shop</span></h1>
+        <p>Faça login ou cadastre sua conta usando uma Key de acesso.</p>
+      </div>
+
+      <div class="abas">
+        <button class="aba ativa" type="button" onclick="mostrarAba('login')">Entrar</button>
+        <button class="aba" type="button" onclick="mostrarAba('cadastro')">Cadastrar</button>
+      </div>
+
+      {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% if mensagens %}
+          {% for categoria, mensagem in mensagens %}
+            <div class="{{ categoria }}" style="display:block;">
+              {{ mensagem }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form id="formLogin" action="/login" method="POST">
+
+        <div class="campo">
+          <label for="usuarioLogin">Usuário</label>
+          <div class="input-area">
+            <input type="text" id="usuarioLogin" name="usuario" placeholder="Digite seu usuário" required>
+            <span class="icone">♠</span>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="senhaLogin">Senha</label>
+          <div class="input-area">
+            <input type="password" id="senhaLogin" name="senha" placeholder="Digite sua senha" required>
+            <span class="icone" onclick="mostrarSenha('senhaLogin')">👁</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login">Entrar no painel</button>
+      </form>
+
+      <form id="formCadastro" class="escondido" action="/cadastrar" method="POST">
+
+        <div class="campo">
+          <label for="keyCadastro">Key de acesso</label>
+          <div class="input-area">
+            <input type="text" id="keyCadastro" name="key" placeholder="Ex: Rush-aqoendk-20077181" required>
+            <span class="icone">♦</span>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="usuarioCadastro">Criar usuário</label>
+          <div class="input-area">
+            <input type="text" id="usuarioCadastro" name="usuario" placeholder="Escolha um usuário" required>
+            <span class="icone">♣</span>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="senhaCadastro">Criar senha</label>
+          <div class="input-area">
+            <input type="password" id="senhaCadastro" name="senha" placeholder="Escolha uma senha" required>
+            <span class="icone" onclick="mostrarSenha('senhaCadastro')">👁</span>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="confirmarSenha">Confirmar senha</label>
+          <div class="input-area">
+            <input type="password" id="confirmarSenha" name="confirmar" placeholder="Repita sua senha" required>
+            <span class="icone" onclick="mostrarSenha('confirmarSenha')">👁</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login">Cadastrar conta</button>
+      </form>
+
+      <div class="detalhe-baixo">
+        Sistema Rush protegido por <strong>Key única</strong>.<br>
+        Cada Key só pode cadastrar uma conta.
+      </div>
+
+    </div>
+
+  </section>
+
+  <script src="/login.js"></script>
+</body>
+</html>

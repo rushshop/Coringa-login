@@ -1,0 +1,326 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --roxo: #8f2cff;
+  --roxo2: #c084ff;
+  --verde: #43ff9c;
+  --card: rgba(14,14,20,0.94);
+  --borda: rgba(255,255,255,0.12);
+  --borda2: #2e2e38;
+  --muted: #a5a5b8;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background:
+    radial-gradient(circle at top left, rgba(143,44,255,0.32), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(143,44,255,0.22), transparent 30%),
+    linear-gradient(135deg, #020202, #09090f 45%, #000);
+  overflow-x: hidden;
+}
+
+.tela-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tela-login::before {
+  content: "RUSH  SHOP  RUSH";
+  position: absolute;
+  top: 8%;
+  left: -8%;
+  font-size: 90px;
+  font-weight: 900;
+  letter-spacing: 10px;
+  color: rgba(255,255,255,0.025);
+  transform: rotate(-14deg);
+  white-space: nowrap;
+}
+
+.tela-login::after {
+  content: "RUSH";
+  position: absolute;
+  bottom: 7%;
+  right: -4%;
+  font-size: 130px;
+  font-weight: 900;
+  letter-spacing: 12px;
+  color: rgba(255,255,255,0.025);
+  transform: rotate(-10deg);
+}
+
+.carta-fundo {
+  position: absolute;
+  width: 135px;
+  height: 190px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, rgba(143,44,255,0.16), rgba(255,255,255,0.02));
+  border: 1px solid rgba(192,132,255,0.18);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 58px;
+  color: rgba(192,132,255,0.25);
+  backdrop-filter: blur(4px);
+  animation: flutuar 6s infinite ease-in-out;
+}
+
+.carta-fundo span {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-size: 24px;
+  color: rgba(255,255,255,0.22);
+}
+
+.carta1 {
+  top: 8%;
+  left: 8%;
+  transform: rotate(-18deg);
+}
+
+.carta2 {
+  top: 12%;
+  right: 9%;
+  transform: rotate(16deg);
+  animation-delay: 1s;
+}
+
+.carta3 {
+  bottom: 9%;
+  left: 11%;
+  transform: rotate(14deg);
+  animation-delay: 2s;
+}
+
+.carta4 {
+  bottom: 8%;
+  right: 12%;
+  transform: rotate(-15deg);
+  animation-delay: 3s;
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -18px;
+  }
+}
+
+.login-box {
+  width: 100%;
+  max-width: 430px;
+  background:
+    radial-gradient(circle at top right, rgba(143,44,255,0.18), transparent 36%),
+    rgba(14,14,20,0.94);
+  border: 1px solid var(--borda);
+  border-radius: 30px;
+  padding: 38px;
+  box-shadow: 0 35px 110px rgba(0,0,0,0.80);
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  backdrop-filter: blur(18px);
+}
+
+.topo {
+  text-align: center;
+  margin-bottom: 26px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 20px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--roxo), var(--roxo2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 45px rgba(143,44,255,0.38);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.topo h1 {
+  font-size: 35px;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.topo h1 span {
+  color: var(--roxo2);
+}
+
+.topo p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.abas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.aba {
+  border: 1px solid var(--borda);
+  background: #09090d;
+  color: white;
+  border-radius: 15px;
+  padding: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.aba.ativa {
+  background: linear-gradient(135deg, var(--roxo), var(--roxo2));
+  border-color: transparent;
+  box-shadow: 0 0 25px rgba(143,44,255,0.30);
+}
+
+.campo {
+  margin-bottom: 19px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #e5e5f0;
+}
+
+.input-area {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 16px 50px 16px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--borda2);
+  background: #07070a;
+  color: white;
+  outline: none;
+  font-size: 15px;
+}
+
+input:focus {
+  border-color: var(--roxo2);
+  box-shadow: 0 0 0 4px rgba(143,44,255,0.17);
+}
+
+.icone {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.erro,
+.sucesso {
+  display: none;
+  border-radius: 15px;
+  padding: 13px;
+  margin-bottom: 18px;
+  color: white;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.erro {
+  background: rgba(255, 50, 50, 0.10);
+  border: 1px solid rgba(255, 80, 80, 0.35);
+}
+
+.sucesso {
+  background: rgba(67, 255, 156, 0.10);
+  border: 1px solid rgba(67, 255, 156, 0.35);
+}
+
+.btn-login,
+.btn-link {
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 17px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--roxo), var(--roxo2));
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(143,44,255,0.28);
+}
+
+.detalhe-baixo {
+  margin-top: 24px;
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.detalhe-baixo strong {
+  color: #ddd;
+}
+
+.escondido {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .tela-login {
+    padding: 18px;
+  }
+
+  .login-box {
+    padding: 30px 24px;
+    border-radius: 26px;
+  }
+
+  .topo h1 {
+    font-size: 30px;
+  }
+
+  .carta-fundo {
+    width: 95px;
+    height: 135px;
+    font-size: 42px;
+    opacity: 0.65;
+  }
+}

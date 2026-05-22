@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rush Shop - Painel</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <section class="header">
+      <div class="brand">
+        <div class="logo-box">
+          <img src="/logo.png" alt="Rush Shop">
+        </div>
+
+        <div>
+          <h1>Rush <span>Shop</span></h1>
+          <p>Painel de sensibilidade FF</p>
+        </div>
+      </div>
+
+      <p class="sub">
+        Quer melhorar sua puxada no FF? Gere sua sensi personalizada para Mobile, Emulador ou Mobilador.
+      </p>
+    </section>
+
+    <section class="box">
+      <h2>Plataforma</h2>
+
+      <div class="tabs">
+        <button class="tab ativo" data-plataforma="mobile">Mobile</button>
+        <button class="tab" data-plataforma="emulador">Emulador</button>
+        <button class="tab" data-plataforma="mobilador">Mobilador</button>
+      </div>
+    </section>
+
+    <section class="box area ativa" id="area-mobile">
+      <h2>Mobile</h2>
+
+      <label for="marca">Marca do celular</label>
+      <select id="marca"></select>
+
+      <label for="modelo">Modelo do celular</label>
+      <select id="modelo"></select>
+    </section>
+
+    <section class="box area" id="area-emulador">
+      <h2>Emulador</h2>
+
+      <label for="tipoEmulador">Emulador</label>
+      <select id="tipoEmulador">
+        <option value="BlueStacks 5">BlueStacks 5</option>
+        <option value="MSI App Player">MSI App Player</option>
+        <option value="LDPlayer 9">LDPlayer 9</option>
+        <option value="GameLoop">GameLoop</option>
+        <option value="NoxPlayer">NoxPlayer</option>
+      </select>
+
+      <label for="ramPc">RAM do PC</label>
+      <select id="ramPc">
+        <option value="4">4 GB</option>
+        <option value="8" selected>8 GB</option>
+        <option value="16">16 GB ou mais</option>
+      </select>
+    </section>
+
+    <section class="box area" id="area-mobilador">
+      <h2>Mobilador</h2>
+
+      <label for="mapeador">Mapeador</label>
+      <select id="mapeador">
+        <option value="GG Mouse Pro">GG Mouse Pro</option>
+        <option value="Panda Mouse Pro">Panda Mouse Pro</option>
+      </select>
+
+      <label for="modoMobilador">Modo</label>
+      <select id="modoMobilador">
+        <option value="Puxada rápida">Puxada rápida</option>
+        <option value="Mira estável">Mira estável</option>
+        <option value="Capa alta">Capa alta</option>
+        <option value="Controle pesado">Controle pesado</option>
+      </select>
+
+      <label for="dpiMobilador">DPI</label>
+      <select id="dpiMobilador">
+        <option value="400">400 DPI</option>
+        <option value="800">800 DPI</option>
+        <option value="1200" selected>1200 DPI</option>
+        <option value="1600">1600 DPI</option>
+        <option value="2400">2400 DPI</option>
+        <option value="3200">3200 DPI</option>
+      </select>
+    </section>
+
+    <section class="box">
+      <h2>Tipo de sensi</h2>
+
+      <div class="tipos">
+        <button class="tipo" data-tipo="pesada">Pesada</button>
+        <button class="tipo ativo" data-tipo="media">Média</button>
+        <button class="tipo" data-tipo="leve">Leve</button>
+      </div>
+    </section>
+
+    <section class="box">
+      <h2>Auxílio</h2>
+
+      <div class="auxilios">
+        <div class="auxilio ativo" data-auxilio="hs">
+          <strong>99% HS</strong>
+          <span>Auxílio para puxada de capa e mira alta.</span>
+        </div>
+
+        <div class="auxilio" data-auxilio="recoil">
+          <strong>Controle de Recuo</strong>
+          <span>Ajuda a deixar a sensi mais controlada.</span>
+        </div>
+
+        <div class="auxilio" data-auxilio="precisao">
+          <strong>Precisão Alta</strong>
+          <span>Configuração para mira mais firme.</span>
+        </div>
+
+        <div class="auxilio" data-auxilio="capa">
+          <strong>Puxada Capa</strong>
+          <span>Auxílio para puxada mais rápida.</span>
+        </div>
+
+        <div class="auxilio" data-auxilio="dpi">
+          <strong>DPI Otimizado</strong>
+          <span>Ajuste de DPI conforme a plataforma.</span>
+        </div>
+
+        <div class="auxilio" data-auxilio="estavel">
+          <strong>Mira Estável</strong>
+          <span>Configuração para controle e estabilidade.</span>
+        </div>
+      </div>
+
+      <div class="botoes">
+        <button class="btn btn-gerar" id="btnGerar">Gerar sensi</button>
+        <button class="btn btn-injetar" id="btnInjetar">Injetar auxílio</button>
+      </div>
+
+      <div class="processo" id="processo">
+        <div class="processo-topo">
+          <span id="tituloProcesso">Aguardando ação...</span>
+          <span id="porcentagem">0%</span>
+        </div>
+
+        <div class="barra">
+          <div class="progresso" id="progresso"></div>
+        </div>
+
+        <p class="status" id="statusProcesso">Nenhum preset carregado.</p>
+
+        <div class="mini-grid">
+          <div class="mini">
+            <span>HS</span>
+            <strong id="miniHs">0%</strong>
+          </div>
+
+          <div class="mini">
+            <span>Recoil</span>
+            <strong id="miniRecoil">0%</strong>
+          </div>
+
+          <div class="mini">
+            <span>Precisão</span>
+            <strong id="miniPrecisao">0%</strong>
+          </div>
+        </div>
+
+        <div class="logs" id="logsProcesso"></div>
+      </div>
+    </section>
+
+    <section class="box resultado" id="resultado">
+      <h2>Resultado</h2>
+      <p id="infoConfig">Sensibilidade gerada</p>
+
+      <div class="cards" id="cardsResultado"></div>
+
+      <div class="resumo" id="textoFinal"></div>
+    </section>
+
+    <div class="footer">
+      Desenvolvido por Rush Shop • <a href="/sair" style="color:#c084ff;">Sair</a>
+    </div>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
